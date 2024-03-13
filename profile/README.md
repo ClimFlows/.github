@@ -8,7 +8,7 @@ Building an ecosystem means that a lot of thought and effort is put not only in 
 Since each independent package deliberately focuses on a limited task, the progress of the ecosystem towards usefulness is demonstrated by achieving milestones where existing packages are composed into a 'useful product'. Our first milestones are:
 
 * a differentiable dry, hydrostatic, global atmospheric solver. Possibly based on spherical harmonics.
-* a dry general circulation model with generic thermodynamics and simplistic but physically-consistent parameterizations for radiation, turbulence and convection.
+* a dry atmospheric general circulation model with generic thermodynamics and simplistic but physically-consistent parameterizations for radiation, turbulence and convection.
 * an implicit-LES Boussinesq/anelastic solver in logically-Cartesian domains
 
 ## Language
