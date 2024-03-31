@@ -16,3 +16,10 @@ Since each independent package deliberately focuses on a limited task, the progr
 Choosing a single computing language makes development easier, but it fractions the already small community of climate-relevant model developers. Ultimately, we would like to find ways to make ClimFlows a polyglot project, with a focus firstly on robust language-agnostic APIs based on sound concepts and abstractions, and secondly on implementations in different languages with different limitations.
 
 For the time being ClimFlows is mostly Julia-based. We expect to implement the most promising APIs in (modern) Fortran when sensible, and to experiment with PyTorch/JAX. Contributors preferring other languages, especially C++, are welcome.
+
+## Gallery
+
+### Rotating shallow-water equations, spherical harmonics
+
+https://github.com/ClimFlows/.github/assets/24214175/d6887e90-0cd5-4d53-a140-ff7b3056ce19
+
