@@ -23,5 +23,5 @@ The following plots and movies can be reproduced by running examples from https:
 
 ### Rotating shallow-water equations, spherical harmonics
 
-https://github.com/ClimFlows/.github/assets/24214175/d6887e90-0cd5-4d53-a140-ff7b3056ce19
+https://github.com/ClimFlows/.github/assets/24214175/4410dfe0-eff4-4b8c-b17b-546103ba6579
 
