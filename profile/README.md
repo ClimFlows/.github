@@ -17,6 +17,10 @@ Choosing a single computing language makes development easier, but it fractions 
 
 For the time being ClimFlows is mostly Julia-based. We consider implementing the most promising APIs in (modern) Fortran when sensible, and to experiment with PyTorch/JAX. Contributors preferring other languages, especially C++, are welcome.
 
+## Overview of all open pull requests
+
+https://github.com/pulls?user=ClimFlows
+
 ## Gallery
 
 The following plots and movies can be reproduced by running examples from https://github.com/ClimFlows/ClimFlowsExamples.
