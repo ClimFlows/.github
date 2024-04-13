@@ -4,6 +4,8 @@ ClimFlows is a work in progress. Its aim is to develop an *ecosystem* of *compos
 
 Building an ecosystem means that thought and effort is put not only in the contents of each package, but also in the way they interact via their respective interfaces (APIs). We expect that arriving at the 'right' APIs will be a trial-and-error process.
 
+See all [pull requests](https://github.com/pulls?user=ClimFlows) and [issues](https://github.com/issues?user=ClimFlows).
+
 ## Milestones
 Since each independent package deliberately focuses on a limited task, the progress of the ecosystem towards usefulness is demonstrated by achieving milestones where existing packages are composed into a 'useful product'. Our first milestones are:
 
@@ -17,24 +19,21 @@ Choosing a single computing language makes development easier, but it fractions 
 
 For the time being ClimFlows is mostly Julia-based. We consider implementing the most promising APIs in (modern) Fortran when sensible, and to experiment with PyTorch/JAX. Contributors preferring other languages, especially C++, are welcome.
 
-## Overview
-* [all pull requests](https://github.com/pulls?user=ClimFlows)
-* [all pull issues](https://github.com/issues?user=ClimFlows)
-
-### Physics
-* [ClimFlowsTestCases](https://github.com/ClimFlows/ClimFlowsTestCases.jl)
-* [ClimFluids](https://github.com/ClimFlows/ClimFluids.jl)
-### Maths
-* [CFTimeSchemes](https://github.com/ClimFlows/CFTimeSchemes.jl)
-* [SHTnsSpheres](https://github.com/ClimFlows/SHTnsSpheres.jl)
-### Performance
-* [ManagedLoops](https://github.com/ClimFlows/ManagedLoops.jl)
-* [LoopManagers](https://github.com/ClimFlows/LoopManagers.jl)
-* [SIMDMathFunctions](https://github.com/ClimFlows/SIMDMathFunctions.jl)
-### Convenience
-* [JuliaRegistry](https://github.com/ClimFlows/JuliaRegistry)
-* [MutatingOrNot](https://github.com/ClimFlows/MutatingOrNot.jl)
-* [CookBooks](https://github.com/ClimFlows/CookBooks.jl)
+## Package overview
+* Physics:
+  [ClimFlowsTestCases](https://github.com/ClimFlows/ClimFlowsTestCases.jl),
+  [ClimFluids](https://github.com/ClimFlows/ClimFluids.jl)
+* Maths:
+  [CFTimeSchemes](https://github.com/ClimFlows/CFTimeSchemes.jl),
+  [SHTnsSpheres](https://github.com/ClimFlows/SHTnsSpheres.jl)
+* Performance:
+  [ManagedLoops](https://github.com/ClimFlows/ManagedLoops.jl),
+  [LoopManagers](https://github.com/ClimFlows/LoopManagers.jl),
+  [SIMDMathFunctions](https://github.com/ClimFlows/SIMDMathFunctions.jl)
+* Convenience:
+  [JuliaRegistry](https://github.com/ClimFlows/JuliaRegistry),
+  [MutatingOrNot](https://github.com/ClimFlows/MutatingOrNot.jl),
+  [CookBooks](https://github.com/ClimFlows/CookBooks.jl)
   
 ## Gallery
 
