@@ -17,13 +17,28 @@ Choosing a single computing language makes development easier, but it fractions 
 
 For the time being ClimFlows is mostly Julia-based. We consider implementing the most promising APIs in (modern) Fortran when sensible, and to experiment with PyTorch/JAX. Contributors preferring other languages, especially C++, are welcome.
 
-## Overview of all open pull requests
+## Overview
+* [all pull requests](https://github.com/pulls?user=ClimFlows)
+* [all pull issues](https://github.com/issues?user=ClimFlows)
 
-https://github.com/pulls?user=ClimFlows
-
+### Physics
+* [ClimFlowsTestCases](https://github.com/ClimFlows/ClimFlowsTestCases.jl)
+* [ClimFluids](https://github.com/ClimFlows/ClimFluids.jl)
+### Maths
+* [CFTimeSchemes](https://github.com/ClimFlows/CFTimeSchemes.jl)
+* [SHTnsSpheres](https://github.com/ClimFlows/SHTnsSpheres.jl)
+### Performance
+* [ManagedLoops](https://github.com/ClimFlows/ManagedLoops.jl)
+* [LoopManagers](https://github.com/ClimFlows/LoopManagers.jl)
+* [SIMDMathFunctions](https://github.com/ClimFlows/SIMDMathFunctions.jl)
+### Convenience
+* [JuliaRegistry](https://github.com/ClimFlows/JuliaRegistry)
+* [MutatingOrNot](https://github.com/ClimFlows/MutatingOrNot.jl)
+* [CookBooks](https://github.com/ClimFlows/CookBooks.jl)
+  
 ## Gallery
 
-The following plots and movies can be reproduced by running examples from https://github.com/ClimFlows/ClimFlowsExamples.
+The following plots and movies can be reproduced by running examples from [ClimFlowsExamples](https://github.com/ClimFlows/ClimFlowsExamples).
 
 ### Rotating shallow-water equations, spherical harmonics
 
