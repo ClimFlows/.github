@@ -32,6 +32,7 @@ For the time being ClimFlows is mostly Julia-based. We consider implementing the
   [SIMDMathFunctions](https://github.com/ClimFlows/SIMDMathFunctions.jl)
 * Convenience:
   [MutatingOrNot](https://github.com/ClimFlows/MutatingOrNot.jl),
+  [MemberFunctions](https://github.com/ClimFlows/MemberFunctions.jl),
   [CookBooks](https://github.com/ClimFlows/CookBooks.jl)
   
 ## Gallery
