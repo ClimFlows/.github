@@ -43,3 +43,9 @@ The following plots and movies can be reproduced by running examples from [ClimF
 
 https://github.com/ClimFlows/.github/assets/24214175/4410dfe0-eff4-4b8c-b17b-546103ba6579
 
+### Rotating shallow-water equations, mimetic finite differences
+
+https://github.com/ClimFlows/.github/assets/24214175/8daa3513-0d24-4f82-9a9b-5aa798635f32
+
+
+
