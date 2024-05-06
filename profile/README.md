@@ -23,9 +23,11 @@ For the time being ClimFlows is mostly Julia-based. We consider implementing the
 * Physics:
   [ClimFlowsTestCases](https://github.com/ClimFlows/ClimFlowsTestCases.jl),
   [ClimFluids](https://github.com/ClimFlows/ClimFluids.jl)
+  [CFShallowWaters](https://github.com/ClimFlows/CFShallowWaters.jl)
 * Maths:
   [CFTimeSchemes](https://github.com/ClimFlows/CFTimeSchemes.jl),
   [SHTnsSpheres](https://github.com/ClimFlows/SHTnsSpheres.jl)
+  [CFDomains](https://github.com/ClimFlows/CFDomains.jl)
 * Performance:
   [ManagedLoops](https://github.com/ClimFlows/ManagedLoops.jl),
   [LoopManagers](https://github.com/ClimFlows/LoopManagers.jl),
@@ -45,7 +47,7 @@ https://github.com/ClimFlows/.github/assets/24214175/4410dfe0-eff4-4b8c-b17b-546
 
 ### Rotating shallow-water equations, mimetic finite differences
 
-https://github.com/ClimFlows/.github/assets/24214175/8daa3513-0d24-4f82-9a9b-5aa798635f32
+https://github.com/ClimFlows/.github/assets/24214175/3ae1b0a0-bef2-4ef1-8602-7c1f86b381a4
 
 
 
