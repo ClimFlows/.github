@@ -22,11 +22,12 @@ For the time being ClimFlows is mostly Julia-based. We consider implementing the
 ## Package overview
 * Physics:
   [ClimFlowsTestCases](https://github.com/ClimFlows/ClimFlowsTestCases.jl),
-  [ClimFluids](https://github.com/ClimFlows/ClimFluids.jl)
-  [CFShallowWaters](https://github.com/ClimFlows/CFShallowWaters.jl)
+  [ClimFluids](https://github.com/ClimFlows/ClimFluids.jl),
+  [CFShallowWaters](https://github.com/ClimFlows/CFShallowWaters.jl),
+  [CFHydrostatics](https://github.com/ClimFlows/CFHydrostatics.jl)
 * Maths:
   [CFTimeSchemes](https://github.com/ClimFlows/CFTimeSchemes.jl),
-  [SHTnsSpheres](https://github.com/ClimFlows/SHTnsSpheres.jl)
+  [SHTnsSpheres](https://github.com/ClimFlows/SHTnsSpheres.jl),
   [CFDomains](https://github.com/ClimFlows/CFDomains.jl)
 * Performance:
   [ManagedLoops](https://github.com/ClimFlows/ManagedLoops.jl),
