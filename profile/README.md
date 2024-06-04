@@ -6,6 +6,24 @@ Building an ecosystem means that thought and effort is put not only in the conte
 
 See all [pull requests](https://github.com/pulls?user=ClimFlows), [issues](https://github.com/issues?user=ClimFlows) and [code coverage](https://app.codecov.io/gh/ClimFlows?repoDisplay=Configured).
 
+[![Build Status](https://github.com/ClimFlows/ClimFlowsTestCases.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/ClimFlowsTestCases.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/ClimFluids.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/ClimFluids.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/CFShallowWaters.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFShallowWaters.jl/actions/workflows/CI.yml?query=branch%3Amain) 
+ [![Build Status](https://github.com/ClimFlows/CFHydrostatics.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFHydrostatics.jl/actions/workflows/CI.yml?query=branch%3Amain)
+
+[![Build Status](https://github.com/ClimFlows/CFTimeSchemes.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFTimeSchemes.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/SHTnsSpheres.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/SHTnsSpheres.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/CFDomains.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFDomains.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/CFTransport.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFTransport.jl/actions/workflows/CI.yml?query=branch%3Amain)
+
+[![CI](https://github.com/ClimFlows/ManagedLoops/actions/workflows/CI.yml/badge.svg)](https://github.com/ClimFlows/ManagedLoops/actions/workflows/CI.yml)
+[![Build Status](https://github.com/ClimFlows/LoopManagers.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/LoopManagers.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![CI](https://github.com/ClimFlows/SIMDMathFunctions.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/ClimFlows/SIMDMathFunctions.jl/actions/workflows/CI.yml)
+
+[![Build Status](https://github.com/ClimFlows/MutatingOrNot.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/MutatingOrNot.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/MemberFunctions.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/MemberFunctions.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/CookBooks.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CookBooks.jl/actions/workflows/CI.yml?query=branch%3Amain)
+
 ## Milestones
 Since each independent package deliberately focuses on a limited task, the progress of the ecosystem towards usefulness is demonstrated by achieving milestones where existing packages are composed into a 'useful product'. Our first milestones are:
 
