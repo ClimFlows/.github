@@ -8,6 +8,7 @@ See all [pull requests](https://github.com/pulls?user=ClimFlows), [issues](https
 
 [![Build Status](https://github.com/ClimFlows/ClimFlowsTestCases.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/ClimFlowsTestCases.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![Build Status](https://github.com/ClimFlows/ClimFluids.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/ClimFluids.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/CFPlanets.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFPlanets.jl/actions/workflows/CI.yml?query=branch%3Amain) 
 [![Build Status](https://github.com/ClimFlows/CFShallowWaters.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFShallowWaters.jl/actions/workflows/CI.yml?query=branch%3Amain) 
  [![Build Status](https://github.com/ClimFlows/CFHydrostatics.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFHydrostatics.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
@@ -41,6 +42,7 @@ For the time being ClimFlows is mostly Julia-based. We consider implementing the
 * Physics:
   [ClimFlowsTestCases](https://github.com/ClimFlows/ClimFlowsTestCases.jl),
   [ClimFluids](https://github.com/ClimFlows/ClimFluids.jl),
+  [CFPlanets](https://github.com/ClimFlows/CFPlanets.jl),
   [CFShallowWaters](https://github.com/ClimFlows/CFShallowWaters.jl),
   [CFHydrostatics](https://github.com/ClimFlows/CFHydrostatics.jl)
 * Maths:
