@@ -50,7 +50,7 @@ For the time being ClimFlows is mostly Julia-based. We consider implementing the
   [CFTimeSchemes](https://github.com/ClimFlows/CFTimeSchemes.jl),
   [SHTnsSpheres](https://github.com/ClimFlows/SHTnsSpheres.jl),
   [CFDomains](https://github.com/ClimFlows/CFDomains.jl),
-  [CFTransport](https://github.com/ClimFlows/CFTransport.jl)
+  [CFTransport](https://github.com/ClimFlows/CFTransport.jl),
   [CFMultiGrid](https://github.com/ClimFlows/CFMultiGrid.jl)
 * Performance:
   [ManagedLoops](https://github.com/ClimFlows/ManagedLoops.jl),
