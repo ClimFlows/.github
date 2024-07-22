@@ -16,6 +16,7 @@ See all [pull requests](https://github.com/pulls?user=ClimFlows), [issues](https
 [![Build Status](https://github.com/ClimFlows/SHTnsSpheres.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/SHTnsSpheres.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![Build Status](https://github.com/ClimFlows/CFDomains.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFDomains.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![Build Status](https://github.com/ClimFlows/CFTransport.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFTransport.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/CFMultigrid.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFMultigrid.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
 [![CI](https://github.com/ClimFlows/ManagedLoops/actions/workflows/CI.yml/badge.svg)](https://github.com/ClimFlows/ManagedLoops/actions/workflows/CI.yml)
 [![Build Status](https://github.com/ClimFlows/LoopManagers.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/LoopManagers.jl/actions/workflows/CI.yml?query=branch%3Amain)
@@ -50,6 +51,7 @@ For the time being ClimFlows is mostly Julia-based. We consider implementing the
   [SHTnsSpheres](https://github.com/ClimFlows/SHTnsSpheres.jl),
   [CFDomains](https://github.com/ClimFlows/CFDomains.jl),
   [CFTransport](https://github.com/ClimFlows/CFTransport.jl)
+  [CFMultiGrid](https://github.com/ClimFlows/CFMultiGrid.jl)
 * Performance:
   [ManagedLoops](https://github.com/ClimFlows/ManagedLoops.jl),
   [LoopManagers](https://github.com/ClimFlows/LoopManagers.jl),
