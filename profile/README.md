@@ -60,7 +60,11 @@ For the time being ClimFlows is mostly Julia-based. We consider implementing the
   [MutatingOrNot](https://github.com/ClimFlows/MutatingOrNot.jl),
   [MemberFunctions](https://github.com/ClimFlows/MemberFunctions.jl),
   [CookBooks](https://github.com/ClimFlows/CookBooks.jl)
-  
+
+ClimFlows Julia packages that are
+not sufficiently general-purpose and mature to be registered in the General Julia registry
+are registered in [JuliaRegistry](https://github.com/ClimFlows/JuliaRegistry).
+
 ## Gallery
 
 The following plots and movies can be reproduced by running examples from [ClimFlowsExamples](https://github.com/ClimFlows/ClimFlowsExamples).
