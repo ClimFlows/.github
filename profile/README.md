@@ -63,7 +63,7 @@ For the time being ClimFlows is mostly Julia-based. We consider implementing the
 
 ClimFlows Julia packages that are
 not sufficiently general-purpose and mature to be registered in the General Julia registry
-are registered in [JuliaRegistry](https://github.com/ClimFlows/JuliaRegistry).
+are registered in [JuliaRegistry](https://github.com/ClimFlows/JuliaRegistry/commits/master/).
 
 ## Gallery
 
