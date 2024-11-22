@@ -4,6 +4,8 @@ ClimFlows is an ongoing effort to develop an *ecosystem* of *composable* package
 
 Building an ecosystem means that thought and effort is put not only in the contents of each package, but also in the way they interact via their respective interfaces (APIs). We expect that arriving at the 'right' APIs will be a trial-and-error process.
 
+The [Gallery](#gallery) is sampled from [ClimFlowsExamples](https://github.com/ClimFlows/ClimFlowsExamples).
+
 See all [pull requests](https://github.com/pulls?user=ClimFlows), [issues](https://github.com/issues?user=ClimFlows) and [code coverage](https://app.codecov.io/gh/ClimFlows?repoDisplay=Configured).
 
 [![Build Status](https://github.com/ClimFlows/ClimFlowsTestCases.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/ClimFlowsTestCases.jl/actions/workflows/CI.yml?query=branch%3Amain)
@@ -69,8 +71,6 @@ not sufficiently general-purpose and mature to be registered in the General Juli
 are registered in [JuliaRegistry](https://github.com/ClimFlows/JuliaRegistry/commits/master/).
 
 ## Gallery
-
-The following plots and movies can be reproduced by running examples from [ClimFlowsExamples](https://github.com/ClimFlows/ClimFlowsExamples).
 
 ### Rotating shallow-water equations, spherical harmonics
 
