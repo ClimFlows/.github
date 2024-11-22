@@ -72,6 +72,10 @@ are registered in [JuliaRegistry](https://github.com/ClimFlows/JuliaRegistry/com
 
 ## Gallery
 
+### Hydrostatic compressible equations, spectral harmonics
+
+https://github.com/user-attachments/assets/71d3168e-2d8e-4c71-9cf8-9b0d936a8881
+
 ### Rotating shallow-water equations, spherical harmonics
 
 https://github.com/ClimFlows/.github/assets/24214175/4410dfe0-eff4-4b8c-b17b-546103ba6579
