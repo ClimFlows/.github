@@ -1,6 +1,6 @@
 # ClimFlows
 
-ClimFlows is a work in progress. Its aim is to develop an *ecosystem* of *composable* packages that can serve as the basis for a variety of climate-relevant numerical models, especially for oceanic and atmospheric circulation.
+ClimFlows is an ongoing effort to develop an *ecosystem* of *composable* packages that can serve as the basis for a variety of climate-relevant numerical models, especially for oceanic and atmospheric circulation.
 
 Building an ecosystem means that thought and effort is put not only in the contents of each package, but also in the way they interact via their respective interfaces (APIs). We expect that arriving at the 'right' APIs will be a trial-and-error process.
 
