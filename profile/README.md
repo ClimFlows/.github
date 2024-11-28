@@ -80,45 +80,37 @@ So far, the dependency graph of ClimFlows packages is essentially:
 ```mermaid
 graph TD;
     LoopManagers==>ManagedLoops;
-    LoopManagers-->KernelAbstractions;
-    CUDA==>KernelAbstractions;
     CFDomains --> SHTnsSpheres
     CFHydrostatics-->ManagedLoops;
     CFTransport --> ManagedLoops;
-    CFHydrostatics-->CFDomains;
+    CFMultiGrid --> ManagedLoops;
     CFHydrostatics-->ClimFluids;
     CFHydrostatics-->CFPlanets;
-    VoronoiHPE-->CFDomains;
-    VoronoiHPE-->CFHydrostatics;
-    VoronoiHPE-->CFTransport;
-    VoronoiHPE-->LoopManagers;
-    VoronoiHPE-->CFTimeSchemes;
-    VoronoiHPE-->CFTestCases;
-    VoronoiHPE-->CUDA;
-    VoronoiHPE-->NetCDF;
+    CFHydrostatics-->CFDomains;
+    CFHydrostatics==>CFTimeSchemes;
+    CFShallowWaters-->CFDomains;
 ```
-In this graph, `SpectralHPE` is the main program (from ClimFlowsExamples) and `CUDA`, `ǸetCDF` are packages from the wider Julia ecosystem. Other packages are from ClimFlows, and some packages are omitted. Plain arrows represent a call from one package to another, while bold arrows represent a *reverse dependency*, whereby a package implements a function whose API is defined in another package. These reverse-dependency arrows are essential to keep the dependency graph shallow. Furthermore, they make it possible to buy into only a fraction of ClimFlows. For instance it would be entirely possible to use a package from the Julia ecosystem to perform time integration, instead of using `CFTimeSchemes`. Furthermore new packages can extend existing packages by implementing their API, in line with the [open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle). Extending packages this way does not require to modify the original package or to deepen the dependency graph.
+Independent packages are omitted, as wel as the tiny `MutatingOrNot`. Plain arrows represent a call from one package to another, while bold arrows represent a *reverse dependency*, whereby a package implements a function whose API is defined in another package. These reverse-dependency arrows are essential to keep the dependency graph shallow. Furthermore, they make it possible to buy into only a fraction of ClimFlows. For instance it would be entirely possible to use a package from the Julia ecosystem to perform time integration, instead of using `CFTimeSchemes`. Furthermore new packages can extend existing packages by implementing their API, in line with the [open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle). Extending packages this way does not require to modify the original package or to deepen the dependency graph.
 
-The corresponding call graph has reverse dependencies 'forward': 
+The corresponding call graph has reverse dependencies 'forward'. A call graph requires a main program, here `VoronoiHPE.jl` from ClimFlowsExamples. 
 
 ```mermaid
 graph TD;
-    ManagedLoops-->LoopManagers;
-    LoopManagers-->KernelAbstractions;
-    KernelAbstractions-->CUDA;
-    CFHydrostatics-->ManagedLoops;
+    VoronoiHPE-->CFTestCases;
+    VoronoiHPE-->NetCDF;
+    VoronoiHPE-->CFTransport;
     CFTransport --> ManagedLoops;
-    CFTimeSchemes--> ManagedLoops;
+    VoronoiHPE-->CFTimeSchemes;
+    CFTimeSchemes-->CFHydrostatics;
+    CFHydrostatics-->ManagedLoops;
     CFHydrostatics-->CFDomains;
     CFHydrostatics-->ClimFluids;
     CFHydrostatics-->CFPlanets;
-    VoronoiHPE-->CFTimeSchemes;
-    VoronoiHPE-->CFHydrostatics;
-    VoronoiHPE-->CFTransport;
-    VoronoiHPE-->CFTestCases;
-    VoronoiHPE-->NetCDF;
+    ManagedLoops-->LoopManagers;
+    LoopManagers-->KernelAbstractions;
+    KernelAbstractions-->CUDA;
 ```
-In this graph, performance-critical routines from physics packages like `CFHydrostatics` are passed to `ManagedLoops`, `LoopManagers`, `KernelAbstractions` and ultimately to `CUDA` to be executed on a GPU. However `CFHydrostatics` itself only depends on the lightweight package `ManagedLoops`.
+`CUDA`, `ǸetCDF` are relatively big packages from the wider Julia ecosystem. Performance-critical routines from physics packages like `CFHydrostatics` are passed to `ManagedLoops`, `LoopManagers`, `KernelAbstractions` and ultimately to `CUDA` to be executed on a GPU. However `CFHydrostatics` itself only depends on the lightweight package `ManagedLoops`.
 
 ## Gallery
 
