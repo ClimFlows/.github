@@ -29,10 +29,14 @@ See all [pull requests](https://github.com/pulls?user=ClimFlows), [issues](https
 [![Build Status](https://github.com/ClimFlows/CookBooks.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CookBooks.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
 ## Milestones
-Since each independent package deliberately focuses on a limited task, the progress of the ecosystem towards usefulness is demonstrated by achieving milestones where existing packages are composed into a 'useful product'. Our first milestones are:
+Since each independent package deliberately focuses on a limited task, the progress of the ecosystem towards usefulness is demonstrated by achieving milestones where existing packages are composed into a 'useful product'. Achieved milestones are:
+
+* a hydrostatic, global atmospheric solver with arbitrary thermodynamics and competitive performance on CPU and GPU
+  
+Our next milestones are:
 
 * a *differentiable* dry, hydrostatic, global atmospheric solver. Possibly based on spherical harmonics.
-* a dry atmospheric general circulation model with *generic thermodynamics* and simplistic but *physically-consistent* parameterizations for radiation, turbulence and convection.
+* a dry atmospheric general circulation solver with *arbitrary thermodynamics* and simplistic but *physically-consistent* models (parameterizations) for radiation, turbulence and convection.
 * an implicit-LES Boussinesq/anelastic solver in logically-Cartesian domains
 
 ## Language
@@ -69,6 +73,52 @@ For the time being ClimFlows is mostly Julia-based. We consider implementing the
 ClimFlows Julia packages that are
 not sufficiently general-purpose and mature to be registered in the General Julia registry
 are registered in [JuliaRegistry](https://github.com/ClimFlows/JuliaRegistry/commits/master/).
+
+### Dependency graph vs call graph
+
+So far, the dependency graph of ClimFlows packages is essentially:
+```mermaid
+graph TD;
+    LoopManagers==>ManagedLoops;
+    LoopManagers-->KernelAbstractions;
+    CUDA==>KernelAbstractions;
+    CFDomains --> SHTnsSpheres
+    CFHydrostatics-->ManagedLoops;
+    CFTransport --> ManagedLoops;
+    CFHydrostatics-->CFDomains;
+    CFHydrostatics-->ClimFluids;
+    CFHydrostatics-->CFPlanets;
+    VoronoiHPE-->CFDomains;
+    VoronoiHPE-->CFHydrostatics;
+    VoronoiHPE-->CFTransport;
+    VoronoiHPE-->LoopManagers;
+    VoronoiHPE-->CFTimeSchemes;
+    VoronoiHPE-->CFTestCases;
+    VoronoiHPE-->CUDA;
+    VoronoiHPE-->NetCDF;
+```
+In this graph, `SpectralHPE` is the main program (from ClimFlowsExamples) and `CUDA`, `ǸetCDF` are packages from the wider Julia ecosystem. Other packages are from ClimFlows, and some packages are omitted. Plain arrows represent a call from one package to another, while bold arrows represent a *reverse dependency*, whereby a package implements a function whose API is defined in another package. These reverse-dependency arrows are essential to keep the dependency graph shallow. Furthermore, they make it possible to buy into only a fraction of ClimFlows. For instance it would be entirely possible to use a package from the Julia ecosystem to perform time integration, instead of using `CFTimeSchemes`. Furthermore new packages can extend existing packages by implementing their API, in line with the [open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle). Extending packages this way does not require to modify the original package or to deepen the dependency graph.
+
+The corresponding call graph has reverse dependencies 'forward': 
+
+```mermaid
+graph TD;
+    ManagedLoops-->LoopManagers;
+    LoopManagers-->KernelAbstractions;
+    KernelAbstractions-->CUDA;
+    CFHydrostatics-->ManagedLoops;
+    CFTransport --> ManagedLoops;
+    CFTimeSchemes--> ManagedLoops;
+    CFHydrostatics-->CFDomains;
+    CFHydrostatics-->ClimFluids;
+    CFHydrostatics-->CFPlanets;
+    VoronoiHPE-->CFTimeSchemes;
+    VoronoiHPE-->CFHydrostatics;
+    VoronoiHPE-->CFTransport;
+    VoronoiHPE-->CFTestCases;
+    VoronoiHPE-->NetCDF;
+```
+In this graph, performance-critical routines from physics packages like `CFHydrostatics` are passed to `ManagedLoops`, `LoopManagers`, `KernelAbstractions` and ultimately to `CUDA` to be executed on a GPU. However `CFHydrostatics` itself only depends on the lightweight package `ManagedLoops`.
 
 ## Gallery
 
