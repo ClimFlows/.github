@@ -1,10 +1,17 @@
 # ClimFlows
 
-ClimFlows is an ongoing effort to develop an *ecosystem* of *composable* packages that can serve as the basis for a variety of climate-relevant numerical models, especially for oceanic and atmospheric circulation.
+ClimFlows is an ongoing effort to develop an *ecosystem* of *composable* and *extensible* packages that can serve as the basis for a variety of climate-relevant numerical models, especially for oceanic and atmospheric circulation.
+Among our long-term goals are:
+* *not monolithic*: cherry-pick interesting functionality without having to install the whole ClimFlows ecosystem
+* competitive performance on CPUs and GPUs, enabling meaningful comparisons
+* physical composability guided by up-to-date understanding of the structure of geophysical models
+* works from laptops to top-100 supercomputers
+* can be composed into models that go from toys to realistic
+* inspire the design of other production-oriented codes
 
 Building an ecosystem means that thought and effort is put not only in the contents of each package, but also in the way they interact via their respective interfaces (APIs). We expect that arriving at the 'right' APIs will be a trial-and-error process.
 
-The [Gallery](#gallery) is sampled from [ClimFlowsExamples](https://github.com/ClimFlows/ClimFlowsExamples).
+See our [Gallery](#gallery) which is sampled from [ClimFlowsExamples](https://github.com/ClimFlows/ClimFlowsExamples).
 
 See all [pull requests](https://github.com/pulls?user=ClimFlows), [issues](https://github.com/issues?user=ClimFlows) and [code coverage](https://app.codecov.io/gh/ClimFlows?repoDisplay=Configured).
 
@@ -120,7 +127,7 @@ Only the main project `VoronoiHPE.jl` depends on `CUDA` and `ǸetCDF`, relativel
 
 ## Gallery
 
-### Hydrostatic compressible equations, spectral harmonics
+### Hydrostatic compressible equations, spherical harmonics
 
 https://github.com/user-attachments/assets/71d3168e-2d8e-4c71-9cf8-9b0d936a8881
 
