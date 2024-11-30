@@ -89,28 +89,34 @@ graph TD;
     CFHydrostatics-->CFDomains;
     CFHydrostatics==>CFTimeSchemes;
     CFShallowWaters-->CFDomains;
+    CFShallowWaters==>CFTimeSchemes;
 ```
-Independent packages are omitted, as wel as the tiny `MutatingOrNot`. Plain arrows represent a call from one package to another, while bold arrows represent a *reverse dependency*, whereby a package implements a function whose API is defined in another package. These reverse-dependency arrows are essential to keep the dependency graph shallow. Furthermore, they make it possible to buy into only a fraction of ClimFlows. For instance it would be entirely possible to use a package from the Julia ecosystem to perform time integration, instead of using `CFTimeSchemes`. Furthermore new packages can extend existing packages by implementing their API, in line with the [open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle). Extending packages this way does not require to modify the original package or to deepen the dependency graph.
+Independent packages are omitted, as wel as the tiny `MutatingOrNot`. Plain arrows represent a call from one package to another, while bold arrows represent a *reverse dependency*, whereby a package implements a function whose interface (API) is defined in another package. These reverse-dependency arrows are essential to keep the dependency graph shallow. Furthermore, they make it possible to buy into only a fraction of ClimFlows. For instance it would be entirely possible to use a package from the Julia ecosystem to perform time integration, instead of using `CFTimeSchemes`. New packages can extend existing packages by implementing their API, in line with the [open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle). Extending packages this way does not require to modify the original package or to deepen the dependency graph.
 
-The corresponding call graph has reverse dependencies 'forward'. A call graph requires a main program, here `VoronoiHPE.jl` from ClimFlowsExamples. 
+The corresponding call graph has reverse dependencies 'forward'. A call graph requires a main program, here `VoronoiHPE.jl` from ClimFlowsExamples:
 
 ```mermaid
 graph TD;
-    VoronoiHPE-->CFTestCases;
-    VoronoiHPE-->NetCDF;
+    VoronoiHPE-->CFDomains*;
+    CFDomains*-->ClimFlowsData;
+    ClimFlowsData-->NetCDF;
+    CFHydrostatics*-->CFPlanets;
+    CFHydrostatics*-->CFTestCases;
     VoronoiHPE-->CFTransport;
     CFTransport --> ManagedLoops;
     VoronoiHPE-->CFTimeSchemes;
+    VoronoiHPE-->CFHydrostatics*;
     CFTimeSchemes-->CFHydrostatics;
     CFHydrostatics-->ManagedLoops;
     CFHydrostatics-->CFDomains;
     CFHydrostatics-->ClimFluids;
-    CFHydrostatics-->CFPlanets;
     ManagedLoops-->LoopManagers;
     LoopManagers-->KernelAbstractions;
     KernelAbstractions-->CUDA;
 ```
-`CUDA`, `ǸetCDF` are relatively big packages from the wider Julia ecosystem. Performance-critical routines from physics packages like `CFHydrostatics` are passed to `ManagedLoops`, `LoopManagers`, `KernelAbstractions` and ultimately to `CUDA` to be executed on a GPU. However `CFHydrostatics` itself only depends on the lightweight package `ManagedLoops`.
+where a star indicates a call made when initializing the model. 
+
+Only the main project `VoronoiHPE.jl` depends on `CUDA` and `ǸetCDF`, relatively big packages from the wider Julia ecosystem. Performance-critical routines from physics packages like `CFHydrostatics` are passed to `ManagedLoops`, `LoopManagers`, `KernelAbstractions` and ultimately to `CUDA` to be executed on a GPU. However `CFHydrostatics` itself only depends on the lightweight package `ManagedLoops`. Similarly the function `NetCDF.ncread` is passed by the main program to `ClimFlowsData` then `CFDomains`, which does not have to depend on `NetCDF` to read the mesh description from disk. This makes it easy to switch to a different storage format if desired.
 
 ## Gallery
 
