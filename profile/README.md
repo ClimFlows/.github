@@ -1,13 +1,11 @@
 # ClimFlows
 
-ClimFlows is an ongoing effort to develop an *ecosystem* of *composable* and *extensible* packages that can serve as the basis for a variety of climate-relevant numerical models, especially for oceanic and atmospheric circulation.
-Among our long-term goals are:
-* *not monolithic*: cherry-pick interesting functionality without having to install the whole ClimFlows ecosystem
-* competitive performance on CPUs and GPUs, enabling meaningful comparisons
-* physical composability guided by up-to-date understanding of the structure of geophysical models
-* works from laptops to top-100 supercomputers
-* can be composed into models that go from toys to realistic
-* inspire the design of other production-oriented codes
+ClimFlows is an ongoing effort to develop an *ecosystem* of *composable* and *extensible* packages:
+* from which one can compose a variety of climate-relevant numerical models, especially for oceanic and atmospheric circulation, from toy models to realistic solvers
+* from which one can cherry-pick specific functionality without having to install the whole ClimFlows ecosystem
+* which works on laptops as well as HPC clusters
+* whose performance is competitive on CPUs and GPUs, enabling meaningful comparisons
+* whose composability builds upon state-of-the-art understanding of the mathematical and physical structure of geophysical models
 
 Building an ecosystem means that thought and effort is put not only in the contents of each package, but also in the way they interact via their respective interfaces (APIs). We expect that arriving at the 'right' APIs will be a trial-and-error process.
 
@@ -48,9 +46,9 @@ Our next milestones are:
 
 ## Language
 
-Choosing a single computing language makes development easier, but it fractions the already small community of climate-relevant model developers. Ultimately, we would like to find ways to make ClimFlows a polyglot project, with a focus firstly on robust language-agnostic APIs based on sound concepts and abstractions, and secondly on implementations in different languages with different limitations.
+For the time being ClimFlows is mostly Julia-based. Choosing a single computing language makes development easier, but it fractions the already small community of climate-relevant model developers. Ultimately, we would like to find ways to make ClimFlows a polyglot project, with a focus firstly on robust language-agnostic APIs based on sound concepts and abstractions, and secondly on implementations in different languages with different limitations.
 
-For the time being ClimFlows is mostly Julia-based. We consider implementing the most promising APIs in (modern) Fortran when sensible, and to experiment with PyTorch/JAX. Contributors preferring other languages, especially C++, are welcome.
+We consider implementing the most promising APIs in (modern) Fortran when sensible. Contributors comfortable with other languages, especially C++, PyTorch and JAX, are welcome.
 
 ## Package overview
 * Physics:
@@ -81,26 +79,9 @@ ClimFlows Julia packages that are
 not sufficiently general-purpose and mature to be registered in the General Julia registry
 are registered in [JuliaRegistry](https://github.com/ClimFlows/JuliaRegistry/commits/master/).
 
-### Dependency graph vs call graph
+### Dependencies
 
-So far, the dependency graph of ClimFlows packages is essentially:
-```mermaid
-graph TD;
-    LoopManagers==>ManagedLoops;
-    CFDomains --> SHTnsSpheres
-    CFHydrostatics-->ManagedLoops;
-    CFTransport --> ManagedLoops;
-    CFMultiGrid --> ManagedLoops;
-    CFHydrostatics-->ClimFluids;
-    CFHydrostatics-->CFPlanets;
-    CFHydrostatics-->CFDomains;
-    CFHydrostatics==>CFTimeSchemes;
-    CFShallowWaters-->CFDomains;
-    CFShallowWaters==>CFTimeSchemes;
-```
-Independent packages are omitted, as wel as the tiny `MutatingOrNot`. Plain arrows represent a call from one package to another, while bold arrows represent a *reverse dependency*, whereby a package implements a function whose interface (API) is defined in another package. These reverse-dependency arrows are essential to keep the dependency graph shallow. Furthermore, they make it possible to buy into only a fraction of ClimFlows. For instance it would be entirely possible to use a package from the Julia ecosystem to perform time integration, instead of using `CFTimeSchemes`. New packages can extend existing packages by implementing their API, in line with the [open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle). Extending packages this way does not require to modify the original package or to deepen the dependency graph.
-
-The corresponding call graph has reverse dependencies 'forward'. A call graph requires a main program, here `VoronoiHPE.jl` from ClimFlowsExamples:
+The call graph of a typical main program, here `VoronoiHPE.jl` from ClimFlowsExamples, looks like:
 
 ```mermaid
 graph TD;
@@ -123,7 +104,27 @@ graph TD;
 ```
 where a star indicates a call made when initializing the model. 
 
-Only the main project `VoronoiHPE.jl` depends on `CUDA` and `ǸetCDF`, relatively big packages from the wider Julia ecosystem. Performance-critical routines from physics packages like `CFHydrostatics` are passed to `ManagedLoops`, `LoopManagers`, `KernelAbstractions` and ultimately to `CUDA` to be executed on a GPU. However `CFHydrostatics` itself only depends on the lightweight package `ManagedLoops`. Similarly the function `NetCDF.ncread` is passed by the main program to `ClimFlowsData` then `CFDomains`, which does not have to depend on `NetCDF` to read the mesh description from disk. This makes it easy to switch to a different storage format if desired.
+However a deep call graph does not necessarily imply a deep dependency graph among packages. The key to a shallow ecosystem dependency graph is [dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle), whereby a package implements a function whose interface (API) is defined in another package. In this example, `CFHydrostatics` implements functions whose API is defined in `CFTimeSchemes`. These functions are called by `CFTimeSchemes` during time integration. Similarly `LoopManagers` implements functions whose API is defined in `ManagedLoops`. To do so, it uses `KernelAbstractions` and `CUDA`, a relatively big package from the wider Julia ecosystem. Performance-critical routines from `CFHydrostatics` are passed to `ManagedLoops`, `LoopManagers`, `KernelAbstractions` and ultimately to `CUDA` to be executed on a GPU. Similarly the function `NetCDF.ncread` is passed by the main program to `ClimFlowsData` then `CFDomains`, which does not have to depend on `NetCDF` to read the mesh description from disk.
+
+As a result, the dependency graph of ClimFlows packages so far is essentially:
+```mermaid
+graph TD;
+    LoopManagers==>ManagedLoops;
+    CFDomains --> SHTnsSpheres
+    CFHydrostatics-->ManagedLoops;
+    CFTransport --> ManagedLoops;
+    CFMultiGrid --> ManagedLoops;
+    CFHydrostatics-->ClimFluids;
+    CFHydrostatics-->CFPlanets;
+    CFHydrostatics-->CFDomains;
+    CFHydrostatics==>CFTimeSchemes;
+    CFShallowWaters-->CFDomains;
+    CFShallowWaters==>CFTimeSchemes;
+```
+Independent packages are omitted, as wel as tiny packages such as `MutatingOrNot`. Plain arrows represent a call from one package to another, while bold arrows represent a *reverse dependency*.
+These arrows make it possible to buy into only a fraction of ClimFlows. For instance it would be entirely possible to use a package from the Julia ecosystem to perform time integration, instead of using `CFTimeSchemes`. In line with the [open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle), new packages can extend existing packages by implementing their API, without modifying the original package or deepening the dependency graph.
+
+While Julia is designed for composability, many other languages, including some considered as legacy, support dependency inversion. For instance, in Fortran 2003, dependency inversion can be achieved by means of procedures (with a fully typed interface) passed as arguments and/or abstract types with deferred bindings.
 
 ## Gallery
 
