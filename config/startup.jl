@@ -6,7 +6,7 @@ function generate_climflows(pkg_name)
                  "*.jl.mem", "*#",
                  "Manifest.toml",
                  "/docs/build/"]
-    extra_versions=["1.8", "1.10", "pre"]
+    extra_versions=["1.8", "1.10", "1"]
     plugins = [Git(; manifest=false, ssh=true, ignore),
                GitHubActions(; extra_versions),
                Codecov(),
