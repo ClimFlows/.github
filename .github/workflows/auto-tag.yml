@@ -27,6 +27,8 @@ jobs:
           fi
 
       - name: Create and push tag
+        permissions:
+          contents: write
         if: steps.tag-check.outputs.exists == 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
