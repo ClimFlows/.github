@@ -35,5 +35,5 @@ jobs:
             using Pkg; Pkg.add("LocalRegistry")
             using LocalRegistry
             registry = "https://github.com/ClimFlows/JuliaRegistry.git"
-            register("./" ; registry)
+            register("." ; registry)
           '
