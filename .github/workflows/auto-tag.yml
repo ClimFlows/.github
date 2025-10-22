@@ -3,6 +3,9 @@ name: Auto-Tag on Version Change (Reusable)
 on:
   workflow_call:
 
+permissions:
+  contents: write
+
 jobs:
   tag:
     runs-on: ubuntu-latest
@@ -27,8 +30,6 @@ jobs:
           fi
 
       - name: Create and push tag
-        permissions:
-          contents: write
         if: steps.tag-check.outputs.exists == 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
