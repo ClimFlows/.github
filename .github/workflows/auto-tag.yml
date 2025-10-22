@@ -1,7 +1,7 @@
-name: Auto-Tag on Version Change
+name: Auto-Tag on Version Change (Reusable)
+
 on:
-  push:
-    branches: [main]
+  workflow_call:
 
 jobs:
   tag:
