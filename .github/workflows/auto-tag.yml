@@ -11,18 +11,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Create and push tag and register package
+      - name: Get version from Project.toml
+        id: version
+        run: |
+          VERSION=$(julia -e 'using TOML; println(TOML.parsefile("Project.toml")["version"])')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+      - name: Check if tag exists
+        id: tag-check
+        run: |
+          if git rev-parse "v${{ steps.version.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Push tag and register package
+        if: steps.tag-check.outputs.exists == 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSION=$(julia -e 'using TOML; println(TOML.parsefile("Project.toml")["version"])')
-          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
-            git tag "v${{ steps.version.outputs.version }}"
-            git push origin "v${{ steps.version.outputs.version }}"
-            julia --project=@register -e '
-              using Pkg; Pkg.add("LocalRegistry")
-              using LocalRegistry
-              registry = "https://github.com/ClimFlows/JuliaRegistry.git"
-              register("./" ; registry)
-            '
-          fi
+          git tag "v${{ steps.version.outputs.version }}"
+          git push origin "v${{ steps.version.outputs.version }}"
+          julia --project=@register -e '
+            using Pkg; Pkg.add("LocalRegistry")
+            using LocalRegistry
+            registry = "https://github.com/ClimFlows/JuliaRegistry.git"
+            register("./" ; registry)
+          '
