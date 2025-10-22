@@ -11,12 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Julia
-        uses: julia-actions/setup-julia@v1
+      - uses: julia-actions/setup-julia@v1
         with:
           version: '1.9'
-
       - name: Register Package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -28,6 +25,3 @@ jobs:
             registry = "https://github.com/ClimFlows/JuliaRegistry.git"
             register(registry, package_name, ".")
           '
-
-
-name: Register Package (Reusable)
