@@ -6,9 +6,14 @@ on:
 permissions:
   contents: write
 
+# A GitHub action cannot push to JuliaRegistry from another repo without a PAT
+# REGISTRY_PAT is a ClimFlows PAT granting read/write acces to JuliaRegistry
+# It has been stored as an org-wide secret.
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   JULIA_GIT: /usr/bin/git
+  REGISTRY_PAT: ${{ secrets.REGISTRY_PAT }}
 
 jobs:
   tag:
@@ -41,6 +46,6 @@ jobs:
           julia --project=@register -e '
             using Pkg; Pkg.add("LocalRegistry")
             using LocalRegistry
-            registry = "https://github.com/ClimFlows/JuliaRegistry.git"
+            registry = "https://x-access-token:${REGISTRY_PAT}@github.com/ClimFlows/JuliaRegistry.git
             register(pwd() ; registry)
           '
