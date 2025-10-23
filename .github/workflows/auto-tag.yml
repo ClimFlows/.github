@@ -49,6 +49,6 @@ jobs:
             using LocalRegistry
             Pkg.Registry.add(RegistrySpec(url="https://x-access-token:${{ secrets.REGISTRY_PAT }}@github.com/ClimFlows/JuliaRegistry.git/"))
             register(pwd() ; registry="ClimFlowsRegistry", push=false)
-          git -C ~/.julia/registries/ClimFlowsRegistry push
           '
+          git -C ~/.julia/registries/ClimFlowsRegistry push
         
