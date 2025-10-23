@@ -48,6 +48,6 @@ jobs:
             using Pkg; Pkg.add("LocalRegistry")
             using LocalRegistry
             Pkg.Registry.add(RegistrySpec(url="https://github.com/ClimFlows/JuliaRegistry.git/"))
-            register(pwd() ; registry="JuliaRegistry")
+            register(pwd() ; registry="ClimFlowsRegistry")
           '
         
