@@ -39,16 +39,16 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global credential.helper store
-          echo "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials      
-          git tag "v${{ steps.version.outputs.version }}"
-          git push origin "v${{ steps.version.outputs.version }}"
           git remote -v
           echo "https://x-access-token:${{ secrets.REGISTRY_PAT }}@github.com" > ~/.git-credentials
           julia --project=@register -e '
             using Pkg; Pkg.add("LocalRegistry")
             using LocalRegistry
-            Pkg.Registry.add(RegistrySpec(url="https://x-access-token:${{ secrets.REGISTRY_PAT }}@github.com/ClimFlows/JuliaRegistry.git/"))
+            Pkg.Registry.add(RegistrySpec(url="https://github.com/ClimFlows/JuliaRegistry.git/"))
             register(pwd() ; registry="ClimFlowsRegistry", push=false)
           '
           git -C ~/.julia/registries/ClimFlowsRegistry push
+          # echo "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials      
+          # git tag "v${{ steps.version.outputs.version }}"
+          # git push origin "v${{ steps.version.outputs.version }}"
         
