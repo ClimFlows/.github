@@ -42,6 +42,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global credential.helper store
           echo "https://x-access-token:${{ secrets.REGISTRY_PAT }}@github.com" > ~/.git-credentials
+          cat ~/.git-credentials
+          git credential-store get
           julia --project=@register -e '
             using Pkg; Pkg.add("LocalRegistry")
             using LocalRegistry
@@ -50,7 +52,9 @@ jobs:
           '
           git config --list
           GIT_CURL_VERBOSE=1 GIT_TRACE=1 git -C ~/.julia/registries/ClimFlowsRegistry push origin master
-          echo "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials      
+          echo "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
+          cat ~/.git-credentials
+          git credential-store get
           git tag "v${{ steps.version.outputs.version }}"
           git push origin "v${{ steps.version.outputs.version }}"
         
