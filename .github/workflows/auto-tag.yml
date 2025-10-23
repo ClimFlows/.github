@@ -46,8 +46,10 @@ jobs:
             using Pkg; Pkg.add("LocalRegistry")
             using LocalRegistry
             Pkg.Registry.add(RegistrySpec(url="https://github.com/ClimFlows/JuliaRegistry.git/"))
-            register(pwd() ; registry="ClimFlowsRegistry")
+            register(pwd() ; registry="ClimFlowsRegistry", push=false)
           '
+          git config --list
+          GIT_CURL_VERBOSE=1 GIT_TRACE=1 git -C ~/.julia/registries/ClimFlowsRegistry push origin master
           echo "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials      
           git tag "v${{ steps.version.outputs.version }}"
           git push origin "v${{ steps.version.outputs.version }}"
