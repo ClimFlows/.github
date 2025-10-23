@@ -16,6 +16,7 @@ env:
   JULIA_GIT: /usr/bin/git
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   REGISTRY_PAT: ${{ secrets.REGISTRY_PAT }}
+  REGISTRY_PATH: ~/.julia/registries/ClimFlowsRegistry
 
 jobs:
   tag:
@@ -51,10 +52,11 @@ jobs:
             register(pwd() ; registry="ClimFlowsRegistry", push=false)
           '
           git config --list
-          GIT_CURL_VERBOSE=1 GIT_TRACE=1 git -C ~/.julia/registries/ClimFlowsRegistry push origin master
+          git -C $REGISTRY_PATH remote set-url origin "https://x-access-token:${{ secrets.REGISTRY_PAT }}@github.com/ClimFlows/JuliaRegistry.git"
+          git -C $REGISTRY_PATH remote -v
+          GIT_CURL_VERBOSE=1 GIT_TRACE=1 git -C $REGISTRY_PATH push origin master
           echo "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
           cat ~/.git-credentials
           git credential-store get
           git tag "v${{ steps.version.outputs.version }}"
           git push origin "v${{ steps.version.outputs.version }}"
-        
