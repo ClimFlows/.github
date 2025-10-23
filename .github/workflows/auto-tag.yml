@@ -46,6 +46,6 @@ jobs:
           julia --project=@register -e '
             using Pkg; Pkg.add("LocalRegistry")
             using LocalRegistry
-            registry = "https://x-access-token:${REGISTRY_PAT}@github.com/ClimFlows/JuliaRegistry.git
+            registry = "https://x-access-token:${{ secrets.REGISTRY_PAT }}@github.com/ClimFlows/JuliaRegistry.git"
             register(pwd() ; registry)
           '
