@@ -11,8 +11,8 @@ permissions:
 # It has been stored as an org-wide secret.
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   JULIA_GIT: /usr/bin/git
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   REGISTRY_PAT: ${{ secrets.REGISTRY_PAT }}
 
 jobs:
@@ -47,6 +47,14 @@ jobs:
           julia --project=@register -e '
             using Pkg; Pkg.add("LocalRegistry")
             using LocalRegistry
-            registry = "https://x-access-token:${{ secrets.REGISTRY_PAT }}@github.com/ClimFlows/JuliaRegistry.git"
-            register(pwd() ; registry)
+            Pkg.Registry.add(RegistrySpec(url="https://github.com/ClimFlows/JuliaRegistry.git/"))
+            register(pwd() ; registry="JuliaRegistry")
           '
+
+- name: Add private registry
+  env:
+    JULIA_GIT: /usr/bin/git
+  run: |
+    julia --color=yes -e '
+      using Pkg
+    '
