@@ -50,11 +50,4 @@ jobs:
             Pkg.Registry.add(RegistrySpec(url="https://github.com/ClimFlows/JuliaRegistry.git/"))
             register(pwd() ; registry="JuliaRegistry")
           '
-
-- name: Add private registry
-  env:
-    JULIA_GIT: /usr/bin/git
-  run: |
-    julia --color=yes -e '
-      using Pkg
-    '
+        
