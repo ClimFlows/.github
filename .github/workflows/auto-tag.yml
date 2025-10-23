@@ -43,6 +43,7 @@ jobs:
           git tag "v${{ steps.version.outputs.version }}"
           git push origin "v${{ steps.version.outputs.version }}"
           git remote -v
+          echo "https://x-access-token:${{ secrets.REGISTRY_PAT }}@github.com" > ~/.git-credentials      
           julia --project=@register -e '
             using Pkg; Pkg.add("LocalRegistry")
             using LocalRegistry
