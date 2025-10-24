@@ -10,7 +10,9 @@ permissions:
 # REGISTRY_PAT is a ClimFlows PAT granting read/write acces to JuliaRegistry
 # It has been stored as an org-wide secret.
 
-# The PAT must have read/write permissions for Actions AND Contents
+# The PAT must have read/write permissions for Contents
+# Not sure the `git-credentials` bit is needed, but this is working after many attempts
+# that were failing due to insufficient PAT permissions.
 
 env:
   JULIA_GIT: /usr/bin/git
@@ -36,7 +38,7 @@ jobs:
           else
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
-      - name: Configure git, push tag and register package
+      - name: Configure git, register package and push tag
         if: steps.tag-check.outputs.exists == 'false'
         run: |
           git config --global user.name "github-actions[bot]"
@@ -49,10 +51,8 @@ jobs:
             Pkg.Registry.add(RegistrySpec(url="https://github.com/ClimFlows/JuliaRegistry.git/"))
             register(pwd() ; registry="ClimFlowsRegistry", push=false)
           '
-          git config --list
           git -C $REGISTRY_PATH remote set-url origin "https://x-access-token:${{ secrets.REGISTRY_PAT }}@github.com/ClimFlows/JuliaRegistry.git"
-          git -C $REGISTRY_PATH remote -v
-          GIT_CURL_VERBOSE=1 GIT_TRACE=1 git -C $REGISTRY_PATH push origin master
+          git -C $REGISTRY_PATH push origin master
           echo "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
           git tag "v${{ steps.version.outputs.version }}"
           git push origin "v${{ steps.version.outputs.version }}"
