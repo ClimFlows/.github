@@ -25,21 +25,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Get version from Project.toml
+      - name: Check if version from Project.toml is tagged
         id: version
         run: |
           VERSION=$(julia -e 'using TOML; println(TOML.parsefile("Project.toml")["version"])')
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-      - name: Check if tag exists
-        id: tag-check
-        run: |
-          if git rev-parse "v${{ steps.version.outputs.version }}" >/dev/null 2>&1; then
+          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+            echo "Version $VERSION is already tagged, skipping registration."
             echo "exists=true" >> $GITHUB_OUTPUT
           else
+            echo "Version $VERSION is not tagged yet, proceeding to registration."
             echo "exists=false" >> $GITHUB_OUTPUT
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
           fi
       - name: Configure git, register package and push tag
-        if: steps.tag-check.outputs.exists == 'false'
+        if: steps.version.outputs.exists == 'false'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
