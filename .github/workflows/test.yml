@@ -42,6 +42,8 @@ jobs:
           arch: ${{ inputs.arch }}
           include-all-prereleases: true
       - uses: julia-actions/cache@v2
+        with:
+          cache-name: 'julia-cache;workflow=${{ github.workflow }};job=${{ github.job }};os=${{ inputs.os }};version=${{ inputs.version }};arch=${{ inputs.arch }}'
       - name: Add private registry
         shell: julia --color=yes {0}
         run: |
