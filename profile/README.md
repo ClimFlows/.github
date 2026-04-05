@@ -11,13 +11,17 @@ Building an ecosystem means that thought and effort is put not only in the conte
 
 See our [Gallery](#gallery) which is sampled from [ClimFlowsExamples](https://github.com/ClimFlows/ClimFlowsExamples).
 
-See all [pull requests](https://github.com/pulls?user=ClimFlows), [issues](https://github.com/issues?user=ClimFlows) and [code coverage](https://app.codecov.io/gh/ClimFlows?repoDisplay=Configured).
+See all [pull requests](https://github.com/pulls?user=ClimFlows), [issues](https://github.com/search?q=org:ClimFlows+is:issue+is:open&type=issues) and [code coverage](https://app.codecov.io/gh/ClimFlows?repoDisplay=Configured).
 
 [![Build Status](https://github.com/ClimFlows/ClimFlowsTestCases.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/ClimFlowsTestCases.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![Build Status](https://github.com/ClimFlows/ClimFluids.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/ClimFluids.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![Build Status](https://github.com/ClimFlows/CFPlanets.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFPlanets.jl/actions/workflows/CI.yml?query=branch%3Amain) 
 [![Build Status](https://github.com/ClimFlows/CFShallowWaters.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFShallowWaters.jl/actions/workflows/CI.yml?query=branch%3Amain) 
- [![Build Status](https://github.com/ClimFlows/CFHydrostatics.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFHydrostatics.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/CFHydrostatics.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFHydrostatics.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/CFDiffusionSchemes.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFDiffusionSchemes.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/SimpleConvection/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/SimpleConvection/actions/workflows/CI.yml?query=branch%3Amain)
+[![Build Status](https://github.com/ClimFlows/SimpleRadiativeTransfer/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/SimpleRadiativeTransfer/actions/workflows/CI.yml?query=branch%3Amain)
+
 
 [![Build Status](https://github.com/ClimFlows/CFTimeSchemes.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/CFTimeSchemes.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![Build Status](https://github.com/ClimFlows/SHTnsSpheres.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/SHTnsSpheres.jl/actions/workflows/CI.yml?query=branch%3Amain)
@@ -56,9 +60,13 @@ We consider implementing the most promising APIs in (modern) Fortran when sensib
   [ClimFluids](https://github.com/ClimFlows/ClimFluids.jl),
   [CFPlanets](https://github.com/ClimFlows/CFPlanets.jl),
   [CFShallowWaters](https://github.com/ClimFlows/CFShallowWaters.jl),
-  [CFHydrostatics](https://github.com/ClimFlows/CFHydrostatics.jl)
+  [CFHydrostatics](https://github.com/ClimFlows/CFHydrostatics.jl),
+  [CFDiffusionSchemes](https://github.com/ClimFlows/CFDiffusionSchemes.jl),
+  [SimpleConvection](https://github.com/ClimFlows/SimpleConvection),
+  [SimpleRadiativeTransfer](https://github.com/ClimFlows/SimpleRadiativeTransfer)
 * Maths:
   [CFTimeSchemes](https://github.com/ClimFlows/CFTimeSchemes.jl),
+  [VoronoiSpheres](https://github.com/ClimFlows/VoronoiSpheres.jl),
   [SHTnsSpheres](https://github.com/ClimFlows/SHTnsSpheres.jl),
   [CFDomains](https://github.com/ClimFlows/CFDomains.jl),
   [CFTransport](https://github.com/ClimFlows/CFTransport.jl),

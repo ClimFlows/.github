@@ -1,5 +1,5 @@
 using PkgTemplates
-using Pkg: Pkg
+import Pkg
 
 function generate_climflows(pkg_name)
     ignore = ["*.jl.*.cov", "*.jl.cov",
@@ -17,4 +17,17 @@ function generate_climflows(pkg_name)
         @info "If git user is not set, do 'git config --global --add github.user GITHUB_USER'"
         throw(e)
     end
+end
+
+function build_docs(pkg)
+    old_env = Base.active_project()
+    pkgdir = dirname(dirname(pathof(pkg)))
+    try
+        Pkg.activate(joinpath(pkgdir, "docs"))
+        Pkg.instantiate()
+        include(joinpath(pkgdir, "docs", "make.jl"))
+    finally
+        Pkg.activate(old_env)
+    end
+    return nothing
 end
