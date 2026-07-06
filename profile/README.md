@@ -11,7 +11,7 @@ Building an ecosystem means that thought and effort is put not only in the conte
 
 See our [Gallery](#gallery) which is sampled from [ClimFlowsExamples](https://github.com/ClimFlows/ClimFlowsExamples).
 
-See all [pull requests](https://github.com/pulls?user=ClimFlows), [issues](https://github.com/search?q=org:ClimFlows+is:issue+is:open&type=issues) and [code coverage](https://app.codecov.io/gh/ClimFlows?repoDisplay=Configured).
+See all [pull requests](https://github.com/pulls/search?q=is%3Aopen+is%3Apr+org%3AClimFlows), [issues](https://github.com/search?q=org:ClimFlows+is:issue+is:open&type=issues) and [code coverage](https://app.codecov.io/gh/ClimFlows?repoDisplay=Configured).
 
 [![Build Status](https://github.com/ClimFlows/ClimFlowsTestCases.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/ClimFlowsTestCases.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![Build Status](https://github.com/ClimFlows/ClimFluids.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/ClimFlows/ClimFluids.jl/actions/workflows/CI.yml?query=branch%3Amain)
