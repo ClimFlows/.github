@@ -22,12 +22,16 @@ env:
 
 jobs:
   tag:
+    if: github.repository_owner == 'ClimFlows'   # forks have no REGISTRY_PAT and must not register
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: 
+        with:
           fetch-depth: 0
           fetch-tags: true
+      - uses: julia-actions/setup-julia@v3          # ubuntu-26.04 images ship no Julia
+        with:
+          version: '1'
       - name: Check if version from Project.toml is tagged
         id: version
         run: |
